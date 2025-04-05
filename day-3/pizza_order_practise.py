@@ -16,7 +16,7 @@ elif size == 'M':
 else:
     total_cost += 25
     if pepperoni == 'Y':
-        total_cost += 3
+        total_cost += 2
 
 if extra_cheese == 'Y':
     total_cost += 1
