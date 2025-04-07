@@ -27,12 +27,17 @@ def take_card(cards, player_container, player_score):
     rand_nr = random.randint(0, len(cards) - 1)
     card_value = cards[rand_nr]
     player_score += card_value
+    if player_score > 21 and 11 in cards:
+        player_score -= card_value
+        player_score += 1
+    if player_score == 21 and len(cards) == 2:
+        player_score = 0
     player_container.append(card_value)
     del cards[rand_nr]
 
     return card_value
 
-
+# cards_copy = []
 
 def black_jack():
     print("\n"*20)
@@ -40,10 +45,8 @@ def black_jack():
     your_cards = []
     computer_cards = []
 
-    cards_copy = cards
-
-    print(cards_copy)
-
+    cards_copy = cards[:] # cards_copy still decrease despite of reset
+    
     # global your_score
     # global computer_score
    
@@ -55,7 +58,7 @@ def black_jack():
     your_score += take_card(cards_copy, your_cards, your_score)
     your_score += take_card(cards_copy, your_cards, your_score)
  
-    # computer take 2 cards
+    # computer take 2 cards 
 
     computer_score += take_card(cards_copy, computer_cards, computer_score)
     computer_score += take_card(cards_copy, computer_cards, computer_score)
@@ -70,7 +73,7 @@ def black_jack():
         if yes_or_no == 'y':
             your_score += take_card(cards_copy, your_cards, your_score)
             if your_score > 21:
-                did_you_go_over = True
+                # did_you_go_over = True
                 break
             if computer_score < 16 :
                 computer_score += take_card(cards_copy, computer_cards, computer_score)
@@ -104,3 +107,7 @@ if is_game_started == 'y':
     black_jack()
 else:
     print("Bye!!")
+
+
+##### COMMENT ####
+# Code doesn't solve case that ace get 2 values 1 and 11
