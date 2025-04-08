@@ -3,18 +3,13 @@ from game_data import data
 import random
 import os
 
-# take a random item from data and ask for the first time -> this time not show your score
 
 def higher_lower_game():
     """"Main game loop for the Higher-Lower game."""
     print(art.logo)
 
-    # shallow copy data
     data_clone = data[:]
-
-    # scoring
     score = 0
-
     current_player = take_a_player(data_clone)
 
     should_continue = True
@@ -51,8 +46,6 @@ def take_a_player(my_list):
 
     return player
 
-# judge whether your guess is right or wrong. if right -> increase score, else -> announce it's wrong and ask to play again.
-
 def compare_followers(current_player, next_player):
     """Compare number of followers between 2 player and return who is winner."""
     print(f"Compare A: {current_player['name']}, a {current_player['description']}, from {current_player['country']}.")
@@ -81,7 +74,7 @@ def score_calculation(your_guess, result, score, player_list):
         should_continue = False
 
         os.system('cls')
-        
+
         print(art.logo)
         print(f"Sorry, that's wrong. Final score: {score}")
 
