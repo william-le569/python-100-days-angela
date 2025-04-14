@@ -10,15 +10,6 @@ for question in question_data:
     new_question = Question(q_text=question_text, q_answer=question_answer)
     question_bank.append(new_question)
 
-# for item in question_bank:
-#     print(item.text)
-#     print(item.answer)
-#     print("")
-
-# ------test section:------
-# question_bank_test = []
-# question_bank_test.append(Question("something", "True"))
-# quiz_brain = QuizBrain(question_bank_test)
 
 quiz = QuizBrain(question_bank)
 
