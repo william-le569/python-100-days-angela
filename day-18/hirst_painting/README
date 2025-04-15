@@ -1,0 +1,19 @@
+Study about responsive hirst drawing
+
+TODO: Convert 1 pixel to 1 unit canvas ?
+
+setwoldcoordiantes use canvas unit
+screen.setworldcoordinates(-150, -200, 150, 200) 
+
+setpos and goto -> use logical unit (canvas unit)
+
+screensize -> return drawable canvas area inside a window in pixel unit
+screen.screensize(300, 400)
+
+window_width(), window_height() return dimensions of the turtle graphics window in pixel unit.
+screen.setup -> change the window size, calculated in pixel unit.
+screen.setup(width=300, height=400)
+
+Logical units are scaled to fit the pixel dimensions of canvas.
+
+canvas.winfo_width() and canvas.winfo_height() -> pixel
