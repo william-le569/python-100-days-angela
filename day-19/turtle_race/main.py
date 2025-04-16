@@ -9,7 +9,7 @@ screen.setup(width=window_with, height=window_height)
 def turtle_race():
     user_bet = screen.textinput(title="Make your bet", prompt="Which turtle will win the race? Enter a color: ").lower()
     colors = ["red", "orange", "yellow", "green", "blue", "purple"]
-    # print(user_bet)
+
     is_race_on = False
     turtle_list = []
 
