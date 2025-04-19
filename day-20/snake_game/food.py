@@ -10,7 +10,7 @@ class Food(Turtle):
        self.shapesize(stretch_len=0.5, stretch_wid=0.5)
        self.color("yellow")
        self.speed("fastest")
-       
+       self.refresh()
 
     def refresh(self):
        random_x = random.randint(-280, 280)
