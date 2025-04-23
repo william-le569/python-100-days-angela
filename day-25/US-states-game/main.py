@@ -3,11 +3,8 @@ import pandas as pd
 from state_manager import StateManager
 
 screen = turtle.Screen()
-
 screen.title("U.S. States Game")
-
 image = "blank_states_img.gif"
-
 screen.addshape(image)
 
 # Create an anonymous object.
@@ -26,16 +23,25 @@ state_manager = StateManager()
 # # other method to keep our screen open
 # turtle.mainloop()
 #------------------------------------------------------
-
+guessed_states = []
 
 is_game_on = True
 while is_game_on:
     answer_state = screen.textinput(title="Guess the State", prompt="What's another state's name?:").strip().lower()
-    if answer_state == 'no':
+    if answer_state == 'Exit'.lower():
+        missing_states = []
+        for state in state_manager.state_dict["state"].values():
+            state = state.strip().lower()
+            if state not in guessed_states:
+                missing_states.append(state.title())
+        print(missing_states)
+        new_data = pd.DataFrame(missing_states)
+        new_data.to_csv("states_to_learn.csv")
         is_game_on = False
         break
  
     if state_manager.is_state_correct(answer_state):
+        guessed_states.append(answer_state.strip().lower())
         state_manager.show_result()
 
 screen.exitonclick()
