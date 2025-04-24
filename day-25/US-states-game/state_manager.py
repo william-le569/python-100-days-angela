@@ -29,7 +29,6 @@ class StateManager(Turtle):
     def is_state_correct(self, answer_state):
         print(answer_state)
         for index in self.state_dict["state"]:
-            print(self.state_dict["state"][index])
             if answer_state == self.state_dict["state"][index].strip().lower():
                 # Retrieve data
                 self.answer = self.state_dict["state"][index]

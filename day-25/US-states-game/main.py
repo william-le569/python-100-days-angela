@@ -29,11 +29,13 @@ is_game_on = True
 while is_game_on:
     answer_state = screen.textinput(title="Guess the State", prompt="What's another state's name?:").strip().lower()
     if answer_state == 'Exit'.lower():
-        missing_states = []
-        for state in state_manager.state_dict["state"].values():
-            state = state.strip().lower()
-            if state not in guessed_states:
-                missing_states.append(state.title())
+        # short the code after learning list comprehension.
+        missing_states = [state.title() for state in state_manager.state_dict["state"].values() if state.strip().lower() not in guessed_states]
+        # missing_states = []
+        # for state in state_manager.state_dict["state"].values():
+        #     state = state.strip().lower()
+        #     if state not in guessed_states:
+        #         missing_states.append(state.title())
         print(missing_states)
         new_data = pd.DataFrame(missing_states)
         new_data.to_csv("states_to_learn.csv")
