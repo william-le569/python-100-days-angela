@@ -30,7 +30,7 @@
 import pandas as pd
 
 data = pd.read_csv("nato_phonetic_alphabet.csv")
-
+# --------------------------------------------------------------------------
 # My solution
 # dict_data = {}
 # for (index, row) in data.iterrows():
