@@ -94,14 +94,9 @@ canvas.create_image(101, 112, image = tomato_img)
 timer_text = canvas.create_text(103, 130, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
 canvas.grid(row=1, column=1)
 
-def calculate():
-    pass
-
-#calls action() when pressed
 button = Button(text="Start", command=start_timer, highlightthickness=0)
 button.grid(row=2, column=0)
 
-#calls action() when pressed
 button = Button(text="Reset", command=reset_timer, highlightthickness=0)
 button.grid(row=2, column=2)
 
