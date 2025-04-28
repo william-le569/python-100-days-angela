@@ -2,6 +2,8 @@ from tkinter import *
 from tkinter import messagebox
 import random
 import pyperclip
+import json
+import os
 
 #---------------PASSWORD GENERATOR---------------------#
 def generate_password():
@@ -50,6 +52,7 @@ def save():
     username_data = username_entry.get()
     password_data = password_entry.get()
 
+
     check_empty_flag = check_empty(website_data, username_data, password_data)
 
     if check_empty_flag == False:
@@ -58,16 +61,23 @@ def save():
         if is_ok:
             new_data = f"{website_data} | {username_data} | {password_data}"
 
-            with open('data.txt') as file:
-                saved_data = file.readlines()
+            file_path = "data.txt"
 
-            if new_data + "\n" not in saved_data:
-                messagebox.showinfo(title="Notification", message="Data is saved!")
-                with open("data.txt", mode="a") as file:
-                    file.write(new_data + '\n')
+            # At first run, this program run incorrectly
+            if not os.path.exists(file_path):
+                with open(file_path, 'w') as file:
+                    messagebox.showinfo(title="Notification", message="Data is saved!")
+                    with open("data.txt", mode='a') as file:
+                        file.write(new_data + '\n')
+            else:
+                with open('data.txt') as file:
+                    saved_data = file.readlines()
+                if new_data + "\n" not in saved_data:
+                    messagebox.showinfo(title="Notification", message="Data is saved!")
+                    with open("data.txt", mode='a') as file:
+                        file.write(new_data + '\n')
             
-            website_entry.delete(0, END)
-            # username_entry.delete(0, END)
+            website_entry.delete(0, END) 
             password_entry.delete(0, END)
 
             website_entry.focus()
@@ -98,7 +108,7 @@ password_label = Label(text="Password:")
 password_label.grid(row=3, column=0)
 
 # Entries
-website_entry = Entry(width=21)
+website_entry = Entry(width=35)
 website_entry.grid(row=1, column=1, columnspan=2, sticky='snew')
 website_entry.focus()
 
